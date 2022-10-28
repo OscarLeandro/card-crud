@@ -2,15 +2,15 @@ import "dotenv/config";
 import "./database/connectdb.js";
 
 import express from "express";
-import cors from "cors";
+//import cors from "cors";
 import cardRoutes from "./routes/card.js";
 
 const app = express();
 
-const whiteList = ["httep: servidor en vercel"];
+//const whiteList = ["httep: servidor en vercel"];
 
-app.use(
-  cors(
+// app.use(
+//   cors(
   //   {
   //   origin: function (origin, callback) {
   //     console.log("😲😲😲 =>", origin);
@@ -21,8 +21,8 @@ app.use(
   //   },
   //   credentials: true,
   // }
-  )
-);
+//   )
+// );
 
 app.use(express.json());
 
