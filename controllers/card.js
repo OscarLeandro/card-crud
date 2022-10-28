@@ -10,9 +10,12 @@ export const list = async (_req, res) => {
     const cards = await Card.find();
 
     res.status(200).json(cards);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ error: "error de servidor" });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({
+      err: err.message,
+      code: err.code,
+  }); 
   }
 };
 export const create = async (req, res) => {
@@ -21,9 +24,11 @@ export const create = async (req, res) => {
     const newCard = await Card(req.body).save();
 
     res.status(200).json(newCard);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ error: "error de servidor" });
+  } catch (err) {
+    res.status(400).json({
+        err: err.message,
+        code: err.code,
+    }); 
   }
 };
 
@@ -32,8 +37,11 @@ export const remove = async (req, res) => {
     const deleted = await Card.findOneAndRemove({_id: req.params.id})
     res.json(deleted);
     
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
+  } catch (err) {
+    res.status(400).json({
+        err: err.message,
+        code: err.code,
+    }); 
   }
 }
 
@@ -46,8 +54,11 @@ export const update = async (req, res) => {
     );
       res.status(200).json(update)
       
-    } catch (error) {
-    return res.status(400).json({ error: error.message });
+    } catch (err) {
+      res.status(400).json({
+          err: err.message,
+          code: err.code,
+      }); 
   }
 }
 
