@@ -1,10 +1,6 @@
 import { Card } from "../models/card.js";
 
 
-
-
-
-
 export const list = async (_req, res) => {
   try {
     const cards = await Card.find();
